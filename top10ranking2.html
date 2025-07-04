@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Torneo Smash Bros - Estadísticas</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Jugador', 'Puntos'],
+                ['Bulbamaster', 6],
+                ['Kube', 5],
+                ['PokeHugo', 4],
+                ['Manuel', 3],
+                ['Safary', 2],
+                ['Edgy AF', 1]
+            ]);
+
+            var options = {
+                title: 'Top 10 Season 2 de Comarca SmashWorld: Face-To-Face',
+                pieHole: 0.4,
+                pieSliceText: 'value', // 👈 Esto muestra los puntos en lugar del porcentaje
+                pieSliceTextStyle: {
+                    fontSize: 14
+                },
+                tooltip: {
+                    trigger: 'focus',
+                    text: 'both' // Muestra tanto nombre como valor al pasar el cursor
+                },
+                colors: ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#0099C6'],
+                backgroundColor: '#f9f9f9',
+                titleTextStyle: {
+                    fontSize: 20,
+                    bold: true
+                }
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 40px;">
+    <h1 style="text-align:center;">Estadísticas del Torneo</h1>
+    <div id="donutchart" style="width: 900px; height: 500px; margin: auto;"></div>
+</body>
+
+</html>
